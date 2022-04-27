@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include<windows.h>
 #include<conio.h>
 #include<string.h>
@@ -35,10 +36,11 @@ void gotoxy(int x, int y)
 void information() {
 	system("cls");
 	
-	gotoxy(3, 10);
+	gotoxy(20, 10);
 	printf("웬낫휘_2105026");
 
-	getchar();
+	getch();
+
 	state = MENU;
 }
 void setting() {
@@ -59,6 +61,7 @@ void setting() {
 					speed -= 1;
 					gotoxy(30, 11);
 					printf("toc do hien tai : %d   ", speed);
+					
 				}
 				break;
 				
@@ -69,8 +72,12 @@ void setting() {
 					speed += 1;
 					gotoxy(30, 11);
 					printf("toc do hien tai : %d   ", speed);
+				
 				}
 				break;
+
+			
+
 			case 13:	//Enter
 				state = MENU;
 				break;
@@ -111,9 +118,9 @@ void gameover() {
 	printf("....Game over....");
 
 	gotoxy(15, 11);
-	printf("Choi ngu duoc co %d diem, an phim bat ki de ve menu", score);
+	printf("\tChoi ngu duoc co %d diem, an phim bat ki de ve menu", score);
 
-	getchar();
+	getch();
 	state = MENU;
 }
 
@@ -297,7 +304,7 @@ void ingame() {
 			character[0] += vy;
 			if (character[0] == fruit) {
 				length += 1;
-				score += (speed / 10 + 5);
+				score += (speed / 10 + 5);	//speed=50 => score = 10 , speed=10 => score = 6
 				addscore();
 				creatfruit();
 				
